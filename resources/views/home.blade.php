@@ -350,10 +350,10 @@
       <a href="{{ route('facilities') }}" class="btn btn-outline-navy d-none d-md-inline-flex">Lihat Semua →</a>
     </div>
 
-    <div class="row g-4 align-items-start">
+    <div class="row g-4 align-items-start fac-reveal">
 
       {{-- KIRI: Video 1 + Divider + Video 2 --}}
-      <div class="col-md-6">
+      <div class="col-md-6 fac-from-left">
         <div class="position-relative" id="heroVideoWrapper">
           <video id="heroVideo" class="w-100 rounded-3" controls controlsList="nodownload">
             <source src="{{ asset('video/PLNxTNI-.mp4') }}" type="video/mp4">
@@ -380,7 +380,7 @@
       </div>
 
       {{-- KANAN: 3 Kartu Berita --}}
-      <div class="col-md-6">
+      <div class="col-md-6 fac-from-right">
         <div class="news-card">
           <div class="news-meta mb-2">
             <i class="bi bi-person-circle"></i> by <strong>PLN MCTN</strong>
@@ -457,17 +457,6 @@
   </div>
 </section>
 
-
-
-<script>
-  function seekVideo(videoId, seconds) {
-    const video = document.getElementById(videoId);
-    if (video) {
-      video.currentTime = Math.max(0, Math.min(video.duration, video.currentTime + seconds));
-    }
-  }
-</script>
-
 <section class="join-cta-section reveal">
   <div class="join-cta-pattern"></div>
   <svg class="join-cta-curve" viewBox="0 0 1400 300" preserveAspectRatio="none">
@@ -505,7 +494,6 @@
 
 @endsection
 
-@section('scripts')
 @section('scripts')
 <script>
 function animateCount(el) {
@@ -636,6 +624,36 @@ wrapperHome.addEventListener('click', (e) => {
     window.location.href = "{{ route('services') }}";
   }
 });
+</script>
+
+<script>
+const servicesWrapHome = document.querySelector('.services-overlap-wrap');
+if (servicesWrapHome) {
+  const wrapObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        servicesWrapHome.classList.add('in-view');
+        wrapObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  wrapObserver.observe(servicesWrapHome);
+}
+</script>
+
+<script>
+const facReveal = document.querySelector('.fac-reveal');
+if (facReveal) {
+  const facObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        facReveal.classList.add('in-view');
+        facObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  facObserver.observe(facReveal);
+}
 </script>
 
 @endsection
