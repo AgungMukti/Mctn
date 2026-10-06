@@ -424,32 +424,36 @@
   </div>
 </section>
 
-<section class="py-5" style="background:var(--mist);">
+<section class="k3l-section">
   <div class="container">
     <div class="text-center mb-5">
       <div class="section-tag mb-2">Keselamatan Adalah Prioritas</div>
       <h2 class="section-title">Komitmen K3L &amp; Zero Accident</h2>
     </div>
+
     <div class="row g-4">
       <div class="col-md-4">
-        <div class="p-4 rounded-3 bg-white border h-100">
-          <div class="fw-bold fs-3 mb-2" style="color:var(--navy);font-family:'Sora',sans-serif;">85,54%</div>
-          <p class="fw-semibold mb-2">Skor Audit SMK3 2024</p>
-          <p class="text-muted mb-0" style="font-size:.88rem;line-height:1.7;">Kategori Tingkat Lanjutan dengan penilaian Memuaskan, diaudit oleh lembaga independen atas 166 kriteria.</p>
+        <div class="k3l-card k3l-teal h-100 reveal">
+          <div class="k3l-icon"><i class="bi bi-award"></i></div>
+          <div class="k3l-num">85,54%</div>
+          <p class="k3l-title">Skor Audit SMK3 2024</p>
+          <p class="k3l-text">Kategori Tingkat Lanjutan dengan penilaian Memuaskan, diaudit oleh lembaga independen atas 166 kriteria.</p>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="p-4 rounded-3 bg-white border h-100">
-          <div class="fw-bold fs-3 mb-2" style="color:var(--navy);font-family:'Sora',sans-serif;">Zero</div>
-          <p class="fw-semibold mb-2">Budaya Nihil Kecelakaan</p>
-          <p class="text-muted mb-0" style="font-size:.88rem;line-height:1.7;">Diterapkan konsisten di seluruh area pembangkit, baik bagi pekerja internal maupun vendor.</p>
+        <div class="k3l-card k3l-amber h-100 reveal" style="transition-delay:.15s">
+          <div class="k3l-icon"><i class="bi bi-shield-check"></i></div>
+          <div class="k3l-num">Zero</div>
+          <p class="k3l-title">Budaya Nihil Kecelakaan</p>
+          <p class="k3l-text">Diterapkan konsisten di seluruh area pembangkit, baik bagi pekerja internal maupun vendor.</p>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="p-4 rounded-3 bg-white border h-100">
-          <div class="fw-bold fs-3 mb-2" style="color:var(--navy);font-family:'Sora',sans-serif;">HES</div>
-          <p class="fw-semibold mb-2">Health Environment Safety Meeting</p>
-          <p class="text-muted mb-0" style="font-size:.88rem;line-height:1.7;">Forum komunikasi internal bulanan yang mendukung budaya keselamatan kerja.</p>
+        <div class="k3l-card k3l-teal h-100 reveal" style="transition-delay:.3s">
+          <div class="k3l-icon"><i class="bi bi-people"></i></div>
+          <div class="k3l-num">HES</div>
+          <p class="k3l-title">Health Environment Safety Meeting</p>
+          <p class="k3l-text">Forum komunikasi internal bulanan yang mendukung budaya keselamatan kerja.</p>
         </div>
       </div>
     </div>
