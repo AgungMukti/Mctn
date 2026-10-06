@@ -1,8 +1,7 @@
 # Website PLN MCTN
 
-Website profil perusahaan PT PLN Mandau Cipta Tenaga Nusantara (PLN MCTN),
-dibangun dengan Laravel 9 + Blade + Bootstrap 5, mengikuti struktur project
-template "Gardenia" (layout, routing, dan gaya penulisan Blade yang sama).
+Website profil perusahaan PT PLN Mandau Cipta Tenaga Nusantara (PLN MCTN).
+
 
 ## Halaman
 
