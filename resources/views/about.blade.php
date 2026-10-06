@@ -2,7 +2,6 @@
 @section('title', 'Tentang Kami — PLN MCTN')
 @section('content')
 
-{{-- ========== ANIMASI HALAMAN TENTANG KAMI ========== --}}
 <script>document.documentElement.classList.add('js');</script>
 <style>
   .js .rv { opacity: 0; }
@@ -168,7 +167,6 @@
   const items = document.querySelectorAll('.rv');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ---------- Hitung angka dari 0 sampai target ----------
   function formatNumber(el, value) {
     const suffix  = el.dataset.suffix || '';
     const noGroup = el.dataset.nogroup === 'true';
@@ -193,18 +191,15 @@
     requestAnimationFrame(tick);
   }
 
-  // Browser lama / reduce-motion: tampilkan langsung, angka tetap final
   if (!('IntersectionObserver' in window) || reduceMotion) {
     items.forEach(el => el.classList.add('is-visible'));
     return;
   }
 
-  // Angka mulai dari 0
   document.querySelectorAll('.count-up').forEach(el => {
     el.textContent = formatNumber(el, 0);
   });
 
-  // ---------- Munculkan elemen saat di-scroll ----------
   const io = new IntersectionObserver((entries) => {
     let i = 0;
     entries.filter(e => e.isIntersecting).forEach(e => {
