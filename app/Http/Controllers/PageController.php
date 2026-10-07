@@ -21,11 +21,6 @@ class PageController extends Controller
         return view('services');
     }
 
-    public function facilities()
-    {
-        return view('facilities');
-    }
-
     public function contact()
     {
         return view('contact');

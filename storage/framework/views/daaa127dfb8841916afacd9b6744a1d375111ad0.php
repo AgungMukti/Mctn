@@ -102,7 +102,6 @@
         <li><a class="nav-link-custom <?php echo e(request()->routeIs('home') ? 'active' : ''); ?>" href="<?php echo e(route('home')); ?>">Beranda</a></li>
         <li><a class="nav-link-custom <?php echo e(request()->routeIs('about') ? 'active' : ''); ?>" href="<?php echo e(route('about')); ?>">Tentang Kami</a></li>
         <li><a class="nav-link-custom <?php echo e(request()->routeIs('services') ? 'active' : ''); ?>" href="<?php echo e(route('services')); ?>">Layanan</a></li>
-        <li><a class="nav-link-custom <?php echo e(request()->routeIs('facilities') ? 'active' : ''); ?>" href="<?php echo e(route('facilities')); ?>">Fasilitas</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link-custom dropdown-toggle <?php echo e(request()->routeIs('pengadaan.*') ? 'active' : ''); ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pengadaan</a>
           <ul class="dropdown-menu dropdown-menu-custom">
@@ -128,7 +127,6 @@
         <li><a class="nav-link text-white-50" href="<?php echo e(route('home')); ?>">Beranda</a></li>
         <li><a class="nav-link text-white-50" href="<?php echo e(route('about')); ?>">Tentang Kami</a></li>
         <li><a class="nav-link text-white-50" href="<?php echo e(route('services')); ?>">Layanan</a></li>
-        <li><a class="nav-link text-white-50" href="<?php echo e(route('facilities')); ?>">Fasilitas</a></li>
         <li>
           <a class="nav-link text-white-50 d-flex justify-content-between align-items-center" href="#pengadaanMobile" data-bs-toggle="collapse" role="button" aria-expanded="false">
             Pengadaan <i class="bi bi-chevron-down small"></i>
@@ -172,7 +170,6 @@
           <li class="mb-2"><a href="<?php echo e(route('home')); ?>">Beranda</a></li>
           <li class="mb-2"><a href="<?php echo e(route('about')); ?>">Tentang Kami</a></li>
           <li class="mb-2"><a href="<?php echo e(route('services')); ?>">Layanan</a></li>
-          <li class="mb-2"><a href="<?php echo e(route('facilities')); ?>">Fasilitas</a></li>
           <li class="mb-2"><a href="<?php echo e(route('pengadaan.index', 'lelang')); ?>">Pengadaan</a></li>
         </ul>
       </div>

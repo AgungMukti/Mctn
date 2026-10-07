@@ -175,12 +175,12 @@
 
   function animateCount(el) {
     const target   = parseFloat(el.dataset.target);
-    const duration = 2200; // ms
+    const duration = 2200; 
     const start    = performance.now();
 
     function tick(now) {
       const progress = Math.min((now - start) / duration, 1);
-      const eased    = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+      const eased    = 1 - Math.pow(1 - progress, 3); 
       el.textContent = formatNumber(el, Math.floor(eased * target));
       if (progress < 1) {
         requestAnimationFrame(tick);

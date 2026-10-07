@@ -117,15 +117,24 @@
   </div>
 </section>
 
-{{-- ========== BANNER AJAKAN ========== --}}
-<section class="sv-cta">
-  <div class="sv-wrap sv-cta-inner">
-    <div class="rv rv-left">
-      <h2>Butuh solusi energi untuk operasi Anda?</h2>
-      <p>Tim kami siap membantu menentukan layanan yang paling sesuai.</p>
+<section class="kt3-cta">
+  <svg class="kt3-cta-deco" viewBox="0 0 260 100" aria-hidden="true">
+    <g fill="none" stroke="#0E8FA8" stroke-opacity=".18" stroke-width="1.5">
+      <path d="M60 50 L100 10 L140 50 L100 90 Z"/>
+      <path d="M120 50 L160 10 L200 50 L160 90 Z"/>
+      <path d="M180 50 L220 10 L260 50 L220 90 Z"/>
+    </g>
+  </svg>
+
+  <div class="kt3-cta-body">
+    <span class="kt3-cta-icon"><i class="bi bi-headset"></i></span>
+    <div>
+  <p class="kt3-cta-title">Butuh solusi energi untuk operasi Anda?</p>
+  <p class="kt3-cta-sub">Tim kami siap membantu menentukan layanan yang paling sesuai.</p>
     </div>
-    <a href="{{ url('/kontak') }}" class="sv-cta-btn rv rv-right">Hubungi kami</a>
-  </div>
+    </div>
+
+  <a href="{{ url('/kontak') }}" class="kt3-cta-btn">Hubungi kami <i class="bi bi-arrow-right"></i></a>
 </section>
 
 <section class="py-5 bg-light">

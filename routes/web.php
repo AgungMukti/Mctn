@@ -13,7 +13,6 @@ use App\Http\Controllers\ProcurementController;
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/tentang', [PageController::class, 'about'])->name('about');
 Route::get('/layanan', [PageController::class, 'services'])->name('services');
-Route::get('/fasilitas', [PageController::class, 'facilities'])->name('facilities');
 Route::get('/kontak', [PageController::class, 'contact'])->name('contact');
 Route::post('/kontak', [PageController::class, 'sendContact'])->name('contact.send');
 

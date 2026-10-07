@@ -17,5 +17,6 @@
     },
     "allowScripts": {
         "esbuild@0.18.20": true
+        
     }
 }

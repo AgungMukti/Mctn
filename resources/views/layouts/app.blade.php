@@ -102,7 +102,6 @@
         <li><a class="nav-link-custom {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Beranda</a></li>
         <li><a class="nav-link-custom {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">Tentang Kami</a></li>
         <li><a class="nav-link-custom {{ request()->routeIs('services') ? 'active' : '' }}" href="{{ route('services') }}">Layanan</a></li>
-        <li><a class="nav-link-custom {{ request()->routeIs('facilities') ? 'active' : '' }}" href="{{ route('facilities') }}">Fasilitas</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link-custom dropdown-toggle {{ request()->routeIs('pengadaan.*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pengadaan</a>
           <ul class="dropdown-menu dropdown-menu-custom">
@@ -128,7 +127,6 @@
         <li><a class="nav-link text-white-50" href="{{ route('home') }}">Beranda</a></li>
         <li><a class="nav-link text-white-50" href="{{ route('about') }}">Tentang Kami</a></li>
         <li><a class="nav-link text-white-50" href="{{ route('services') }}">Layanan</a></li>
-        <li><a class="nav-link text-white-50" href="{{ route('facilities') }}">Fasilitas</a></li>
         <li>
           <a class="nav-link text-white-50 d-flex justify-content-between align-items-center" href="#pengadaanMobile" data-bs-toggle="collapse" role="button" aria-expanded="false">
             Pengadaan <i class="bi bi-chevron-down small"></i>
@@ -172,7 +170,6 @@
           <li class="mb-2"><a href="{{ route('home') }}">Beranda</a></li>
           <li class="mb-2"><a href="{{ route('about') }}">Tentang Kami</a></li>
           <li class="mb-2"><a href="{{ route('services') }}">Layanan</a></li>
-          <li class="mb-2"><a href="{{ route('facilities') }}">Fasilitas</a></li>
           <li class="mb-2"><a href="{{ route('pengadaan.index', 'lelang') }}">Pengadaan</a></li>
         </ul>
       </div>

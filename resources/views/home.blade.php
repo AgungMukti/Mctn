@@ -347,7 +347,6 @@
         <div class="section-tag mb-2">Infrastruktur </div>
         <h2 class="section-title mb-0"> Proyek Kami </h2>
       </div>
-      <a href="{{ route('facilities') }}" class="btn btn-outline-navy d-none d-md-inline-flex">Lihat Semua →</a>
     </div>
 
     <div class="row g-4 align-items-start fac-reveal">

@@ -1,71 +1,96 @@
 <?php $__env->startSection('title', $categoryLabel . ' — PLN MCTN'); ?>
 <?php $__env->startSection('content'); ?>
 
+<?php
+  // Ikon per kategori (dicocokkan dengan potongan slug). Ubah kalau slug-mu beda.
+  $catIcons = [
+    'news'     => 'bi-newspaper',
+    'tender'   => 'bi-megaphone',
+    'dpt'      => 'bi-person-check',
+    'pemenang' => 'bi-trophy',
+    'sanggah'  => 'bi-trophy',
+    'lelang'   => 'bi-hammer',
+  ];
+  $iconFor = function ($slug) use ($catIcons) {
+    foreach ($catIcons as $key => $icon) {
+      if (str_contains($slug, $key)) return $icon;
+    }
+    return 'bi-folder2';
+  };
+?>
 
-<section class="py-5 my-3">
-  <div class="container">
-    <div class="row g-5">
+<section class="pg-page">
 
-      
-      <div class="col-lg-3">
-        <div class="p-3 rounded-3 mb-4" style="background:var(--mist);">
-          <div style="font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--navy);text-transform:uppercase;margin-bottom:.75rem;">Kategori</div>
-          <ul class="list-unstyled mb-0" style="font-size:.9rem;">
-            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slug => $label): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li class="mb-1">
-              <a href="<?php echo e(route('pengadaan.index', $slug)); ?>"
-                 class="d-block px-3 py-2 rounded-2 text-decoration-none <?php echo e($category === $slug ? 'fw-bold' : 'text-muted'); ?>"
-                 style="<?php echo e($category === $slug ? 'background:var(--navy);color:#fff;' : 'color:#4a4f58;'); ?>">
-                <?php echo e($label); ?>
+  
+  <svg class="pg-deco pg-deco--right" viewBox="0 0 560 640" fill="none" aria-hidden="true">
+    <circle cx="360" cy="320" r="250" fill="#e1f3f6"/>
+    <circle cx="360" cy="320" r="170" stroke="#12a3b8" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 10"/>
+    <path d="M390 90 190 360h130l-30 190 210-290H360z" fill="#f5c400" fill-opacity=".85"/>
+    <circle cx="120" cy="560" r="26" fill="#0b3a78"/>
+    <circle cx="500" cy="130" r="14" fill="#f5a100"/>
+  </svg>
 
-              </a>
-            </li>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-          </ul>
+  
+  <svg class="pg-deco pg-deco--left" viewBox="0 0 420 420" fill="none" aria-hidden="true">
+    <circle cx="210" cy="210" r="190" fill="#0b3a78" fill-opacity=".08"/>
+    <circle cx="210" cy="210" r="120" stroke="#0b3a78" stroke-opacity=".25" stroke-width="2"/>
+  </svg>
+
+  <div class="pg-main">
+
+    
+    <aside class="pg-side">
+      <div class="pg-side__title">Kategori</div>
+      <ul class="pg-side__list">
+        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slug => $label): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <li>
+          <a href="<?php echo e(route('pengadaan.index', $slug)); ?>"
+             class="pg-cat <?php echo e($category === $slug ? 'is-active' : ''); ?>">
+            <i class="bi <?php echo e($iconFor($slug)); ?>"></i>
+            <?php echo e($label); ?>
+
+          </a>
+        </li>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </ul>
+    </aside>
+
+    
+    <div>
+      <?php if($items->isEmpty()): ?>
+        <div class="pg-empty">
+          <i class="bi bi-inbox fs-1 text-muted"></i>
+          <p class="text-muted mt-3 mb-0">Belum ada pengumuman untuk kategori <?php echo e($categoryLabel); ?>.</p>
         </div>
-      </div>
+      <?php else: ?>
+        <div class="pg-list">
+          <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <a href="<?php echo e(route('pengadaan.show', [$category, $item->slug])); ?>" class="pg-card">
+            <div class="pg-card__blob"></div>
+            <span class="pg-card__icon"><i class="bi bi-file-earmark-text-fill"></i></span>
+            <div class="pg-card__body">
+              <?php if($item->published_at): ?>
+                <span class="pg-card__date"><?php echo e($item->published_at->translatedFormat('d F Y')); ?></span>
+              <?php endif; ?>
+              <h5 class="pg-card__title"><?php echo e($item->title); ?></h5>
+              <?php if($item->excerpt): ?>
+                <p class="pg-card__text"><?php echo e($item->excerpt); ?></p>
+              <?php endif; ?>
+            </div>
+          </a>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
 
-      
-      <div class="col-lg-9">
-        <?php if($items->isEmpty()): ?>
-          <div class="p-5 text-center rounded-3" style="background:var(--mist);">
-            <i class="bi bi-inbox fs-1 text-muted"></i>
-            <p class="text-muted mt-3 mb-0">Belum ada pengumuman untuk kategori <?php echo e($categoryLabel); ?>.</p>
-          </div>
-        <?php else: ?>
-          <div class="d-flex flex-column gap-3">
-            <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <a href="<?php echo e(route('pengadaan.show', [$category, $item->slug])); ?>" class="text-decoration-none">
-              <div class="svc-card p-4">
-                <div class="d-flex align-items-start gap-3">
-                  <div class="svc-icon flex-shrink-0" style="width:44px;height:44px;font-size:1.05rem;">
-                    <i class="bi bi-file-earmark-text-fill"></i>
-                  </div>
-                  <div>
-                    <?php if($item->published_at): ?>
-                      <div class="svc-num mb-1"><?php echo e($item->published_at->translatedFormat('d F Y')); ?></div>
-                    <?php endif; ?>
-                    <h5 class="fw-bold mb-2" style="color:var(--dark);"><?php echo e($item->title); ?></h5>
-                    <?php if($item->excerpt): ?>
-                      <p class="text-muted mb-0" style="font-size:.9rem;line-height:1.7;"><?php echo e($item->excerpt); ?></p>
-                    <?php endif; ?>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-          </div>
+        <div class="mt-4">
+          <?php echo e($items->links()); ?>
 
-          <div class="mt-4">
-            <?php echo e($items->links()); ?>
-
-          </div>
-        <?php endif; ?>
-      </div>
-
+        </div>
+      <?php endif; ?>
     </div>
+
   </div>
 </section>
+
 
 <section class="py-5 bg-light">
   <div class="container">
@@ -91,9 +116,6 @@
     </div>
   </div>
 </section>
-  </div> 
-</section>
 
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Mctn\resources\views/pengadaan/index.blade.php ENDPATH**/ ?>
