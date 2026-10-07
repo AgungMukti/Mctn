@@ -166,11 +166,9 @@
 <?php $__env->startSection('scripts'); ?>
 <script>
 
-/* ================= ANIMASI SCROLL ================= */
 (function () {
   const items = document.querySelectorAll('.rv, .rv-cards');
 
-  // Browser lama tanpa IntersectionObserver: tampilkan semuanya langsung
   if (!('IntersectionObserver' in window)) {
     items.forEach(el => el.classList.add('is-visible'));
     return;
@@ -189,7 +187,6 @@
   items.forEach(el => io.observe(el));
 })();
 
-/* ================= DETAIL LAYANAN ================= */
 const serviceData = {
   fast:  { tag:'FAST',  title:'FAST',  desc:'Enterprise Interconnection Extra Facility Solutions. Gardu Induk, IML, Freq Converter, dan saluran transmisi & distribusi.', img:'<?php echo e(asset("images/fast.jpg")); ?>', fullTitle:'Enterprise Interconnection Extra Facility Solutions', results:['Pemasangan Gardu Induk Blok Hulu Rokan','Instalasi Onshore Power Supply 4000 kVA','Pemeliharaan saluran transmisi & distribusi'] },
   poqs:  { tag:'POQs',  title:'POQs',  desc:'Enterprise Power Quality Solutions. Peralatan power quality, voltage quality, dan watt/var compensator.', img:'<?php echo e(asset("images/poqs.jpg")); ?>', fullTitle:'Enterprise Power Quality Solutions', results:['Instalasi sistem voltage quality','Pemasangan UPS backup daya kritikal','Optimalisasi power factor operasional'] },
@@ -212,11 +209,11 @@ function setActiveCard(key) {
   });
 }
 
-// Putar ulang animasi foto (dari kiri) & teks (dari kanan) setiap ganti layanan
+
 function replaySwapAnimation() {
   document.querySelectorAll('.service-detail-img, .service-detail-body').forEach(el => {
     el.classList.remove('swap-in');
-    void el.offsetWidth; // paksa reflow agar animasi bisa diulang
+    void el.offsetWidth; 
     el.classList.add('swap-in');
   });
 }

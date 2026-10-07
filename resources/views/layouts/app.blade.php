@@ -99,14 +99,14 @@
 </a>
 
       <ul class="navbar-nav flex-row d-none d-lg-flex align-items-center gap-1 mb-0">
-        <li><a class="nav-link-custom {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Beranda</a></li>
-        <li><a class="nav-link-custom {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">Tentang Kami</a></li>
-        <li><a class="nav-link-custom {{ request()->routeIs('services') ? 'active' : '' }}" href="{{ route('services') }}">Layanan</a></li>
+        <li><a class="nav-link-custom {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">{{ __('Beranda') }}</a></li>
+        <li><a class="nav-link-custom {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">{{ __('Tentang Kami') }}</a></li>
+        <li><a class="nav-link-custom {{ request()->routeIs('services') ? 'active' : '' }}" href="{{ route('services') }}">{{ __('Layanan') }}</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link-custom dropdown-toggle {{ request()->routeIs('pengadaan.*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pengadaan</a>
+          <a class="nav-link-custom dropdown-toggle {{ request()->routeIs('pengadaan.*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('Pengadaan') }}</a>
           <ul class="dropdown-menu dropdown-menu-custom">
             @foreach(\App\Models\Procurement::categories() as $slug => $label)
-            <li><a class="dropdown-item {{ request()->routeIs('pengadaan.*') && request()->route('category') === $slug ? 'active' : '' }}" href="{{ route('pengadaan.index', $slug) }}">{{ $label }}</a></li>
+            <li><a class="dropdown-item {{ request()->routeIs('pengadaan.*') && request()->route('category') === $slug ? 'active' : '' }}" href="{{ route('pengadaan.index', $slug) }}">{{ __($label) }}</a></li>
             @endforeach
           </ul>
         </li>
@@ -116,6 +116,7 @@
       <div class="d-none d-lg-block">
         <a href="{{ route('contact') }}" class="btn btn-nav-contact">Hubungi Kami</a>
       </div>
+      
 
       <button class="navbar-toggler d-lg-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
         <i class="bi bi-list fs-3 text-white"></i>

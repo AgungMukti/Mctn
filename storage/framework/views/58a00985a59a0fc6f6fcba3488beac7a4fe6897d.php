@@ -1,8 +1,7 @@
-<?php $__env->startSection('title', $categoryLabel . ' — PLN MCTN'); ?>
+<?php $__env->startSection('title', __($categoryLabel) . ' — PLN MCTN'); ?>
 <?php $__env->startSection('content'); ?>
 
 <?php
-  // Ikon per kategori (dicocokkan dengan potongan slug). Ubah kalau slug-mu beda.
   $catIcons = [
     'news'     => 'bi-newspaper',
     'tender'   => 'bi-megaphone',
@@ -17,6 +16,10 @@
     }
     return 'bi-folder2';
   };
+
+  $years = $items->getCollection()
+    ->map(fn ($i) => optional($i->published_at)->format('Y'))
+    ->filter()->unique()->sortDesc()->values();
 ?>
 
 <section class="pg-page">
@@ -40,14 +43,14 @@
 
     
     <aside class="pg-side">
-      <div class="pg-side__title">Kategori</div>
+      <div class="pg-side__title"><?php echo e(__('Kategori')); ?></div>
       <ul class="pg-side__list">
         <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slug => $label): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <li>
           <a href="<?php echo e(route('pengadaan.index', $slug)); ?>"
              class="pg-cat <?php echo e($category === $slug ? 'is-active' : ''); ?>">
             <i class="bi <?php echo e($iconFor($slug)); ?>"></i>
-            <?php echo e($label); ?>
+            <?php echo e(__($label)); ?>
 
           </a>
         </li>
@@ -56,38 +59,107 @@
     </aside>
 
     
-    <div>
+    <div class="pgx">
+
+      
+      <div class="pgx-head">
+        <div>
+          <h2 class="pgx-head__title"><?php echo e(__($categoryLabel)); ?></h2>
+          <div class="pgx-head__count"><?php echo e(__(':count pengumuman', ['count' => $items->total()])); ?></div>
+        </div>
+
+        <?php if (! ($items->isEmpty())): ?>
+        <div class="pgx-tools">
+          <label class="pgx-search">
+            <i class="bi bi-search"></i>
+            <input type="search" id="pgxSearch" placeholder="<?php echo e(__('Cari pengumuman')); ?>" autocomplete="off">
+          </label>
+          <?php if($years->count() > 1): ?>
+          <select id="pgxYear" class="pgx-select" aria-label="<?php echo e(__('Tahun')); ?>">
+            <option value=""><?php echo e(__('Semua tahun')); ?></option>
+            <?php $__currentLoopData = $years; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $y): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <option value="<?php echo e($y); ?>"><?php echo e($y); ?></option>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+          </select>
+          <?php endif; ?>
+        </div>
+        <?php endif; ?>
+      </div>
+
       <?php if($items->isEmpty()): ?>
         <div class="pg-empty">
           <i class="bi bi-inbox fs-1 text-muted"></i>
-          <p class="text-muted mt-3 mb-0">Belum ada pengumuman untuk kategori <?php echo e($categoryLabel); ?>.</p>
+          <p class="text-muted mt-3 mb-0"><?php echo e(__('Belum ada pengumuman untuk kategori :category.', ['category' => __($categoryLabel)])); ?></p>
         </div>
       <?php else: ?>
-        <div class="pg-list">
+        <div class="pgx-list" id="pgxList">
           <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-          <a href="<?php echo e(route('pengadaan.show', [$category, $item->slug])); ?>" class="pg-card">
-            <div class="pg-card__blob"></div>
-            <span class="pg-card__icon"><i class="bi bi-file-earmark-text-fill"></i></span>
-            <div class="pg-card__body">
-              <?php if($item->published_at): ?>
-                <span class="pg-card__date"><?php echo e($item->published_at->translatedFormat('d F Y')); ?></span>
-              <?php endif; ?>
-              <h5 class="pg-card__title"><?php echo e($item->title); ?></h5>
-              <?php if($item->excerpt): ?>
-                <p class="pg-card__text"><?php echo e($item->excerpt); ?></p>
-              <?php endif; ?>
-            </div>
-          </a>
+            <?php
+              $isFeatured = $loop->first && $items->onFirstPage();
+              $year = optional($item->published_at)->format('Y');
+            ?>
+
+            <?php if($isFeatured): ?>
+              <a href="<?php echo e(route('pengadaan.show', [$category, $item->slug])); ?>"
+                 class="pgx-feature pgx-item"
+                 data-title="<?php echo e(\Illuminate\Support\Str::lower($item->title . ' ' . $item->excerpt)); ?>"
+                 data-year="<?php echo e($year); ?>">
+                <span class="pgx-feature__icon"><i class="bi bi-file-earmark-text-fill"></i></span>
+                <div class="pgx-feature__body">
+                  <div class="pgx-badges">
+                    <?php if($item->published_at): ?>
+                      <span class="pgx-chip pgx-chip--amber"><?php echo e($item->published_at->translatedFormat('d F Y')); ?></span>
+                    <?php endif; ?>
+                    <span class="pgx-chip pgx-chip--green"><?php echo e(__('Terbaru')); ?></span>
+                    <?php if($item->attachment_path): ?>
+                      <i class="bi bi-paperclip pgx-clip" title="<?php echo e(__('Lampiran tersedia')); ?>"></i>
+                    <?php endif; ?>
+                  </div>
+                  <h3 class="pgx-feature__title"><?php echo e($item->title); ?></h3>
+                  <?php if($item->excerpt): ?>
+                    <p class="pgx-feature__text"><?php echo e($item->excerpt); ?></p>
+                  <?php endif; ?>
+                  <span class="pgx-more"><?php echo e(__('Baca Selengkapnya')); ?> <i class="bi bi-arrow-right"></i></span>
+                </div>
+              </a>
+            <?php else: ?>
+              <a href="<?php echo e(route('pengadaan.show', [$category, $item->slug])); ?>"
+                 class="pgx-row pgx-item"
+                 data-title="<?php echo e(\Illuminate\Support\Str::lower($item->title . ' ' . $item->excerpt)); ?>"
+                 data-year="<?php echo e($year); ?>">
+                <span class="pgx-row__icon"><i class="bi bi-file-earmark-text"></i></span>
+                <div class="pgx-row__body">
+                  <?php if($item->published_at): ?>
+                    <span class="pgx-row__date"><?php echo e($item->published_at->translatedFormat('d F Y')); ?></span>
+                  <?php endif; ?>
+                  <span class="pgx-row__title"><?php echo e($item->title); ?></span>
+                </div>
+                <?php if($item->attachment_path): ?>
+                  <i class="bi bi-paperclip pgx-clip" title="<?php echo e(__('Lampiran tersedia')); ?>"></i>
+                <?php endif; ?>
+                <i class="bi bi-chevron-right pgx-row__arrow"></i>
+              </a>
+            <?php endif; ?>
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+          <div class="pgx-nomatch" id="pgxNoMatch" hidden><?php echo e(__('Tidak ada pengumuman yang cocok.')); ?></div>
         </div>
 
-        <div class="mt-4">
-          <?php echo e($items->links()); ?>
-
-        </div>
+        <?php if($items->hasPages()): ?>
+          <div class="pgx-pager"><?php echo e($items->links()); ?></div>
+        <?php endif; ?>
       <?php endif; ?>
-    </div>
 
+      
+      <div class="pgx-help">
+        <div>
+          <div class="pgx-help__title"><?php echo e(__('Ada pertanyaan seputar pengadaan?')); ?></div>
+          <div class="pgx-help__text"><?php echo e(__('Tim kami siap membantu anda.')); ?></div>
+        </div>
+        <a href="<?php echo e(route('contact')); ?>" class="pgx-help__btn"><?php echo e(__('Hubungi Kami')); ?></a>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -117,5 +189,32 @@
   </div>
 </section>
 
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+<script>
+(function () {
+  const search  = document.getElementById('pgxSearch');
+  const year    = document.getElementById('pgxYear');
+  const items   = document.querySelectorAll('.pgx-item');
+  const noMatch = document.getElementById('pgxNoMatch');
+  if (!search) return;
+
+  function apply() {
+    const q = search.value.trim().toLowerCase();
+    const y = year ? year.value : '';
+    let shown = 0;
+    items.forEach(el => {
+      const ok = (!q || el.dataset.title.includes(q)) && (!y || el.dataset.year === y);
+      el.hidden = !ok;
+      if (ok) shown++;
+    });
+    noMatch.hidden = shown !== 0;
+  }
+
+  search.addEventListener('input', apply);
+  if (year) year.addEventListener('change', apply);
+})();
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Mctn\resources\views/pengadaan/index.blade.php ENDPATH**/ ?>

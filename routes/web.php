@@ -63,3 +63,10 @@ Route::get('/artikel/penopang-produksi', function () {
 Route::get('/artikel/listrik-uap', function () {
     return view('artikel.listrik-uap');
 })->name('artikel.listrik-uap');
+
+Route::get('/bahasa/{locale}', function ($locale) {
+    if (in_array($locale, ['id', 'en'])) {
+        session(['locale' => $locale]);
+    }
+    return back();
+})->name('lang.switch');

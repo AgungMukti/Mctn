@@ -99,14 +99,14 @@
 </a>
 
       <ul class="navbar-nav flex-row d-none d-lg-flex align-items-center gap-1 mb-0">
-        <li><a class="nav-link-custom <?php echo e(request()->routeIs('home') ? 'active' : ''); ?>" href="<?php echo e(route('home')); ?>">Beranda</a></li>
-        <li><a class="nav-link-custom <?php echo e(request()->routeIs('about') ? 'active' : ''); ?>" href="<?php echo e(route('about')); ?>">Tentang Kami</a></li>
-        <li><a class="nav-link-custom <?php echo e(request()->routeIs('services') ? 'active' : ''); ?>" href="<?php echo e(route('services')); ?>">Layanan</a></li>
+        <li><a class="nav-link-custom <?php echo e(request()->routeIs('home') ? 'active' : ''); ?>" href="<?php echo e(route('home')); ?>"><?php echo e(__('Beranda')); ?></a></li>
+        <li><a class="nav-link-custom <?php echo e(request()->routeIs('about') ? 'active' : ''); ?>" href="<?php echo e(route('about')); ?>"><?php echo e(__('Tentang Kami')); ?></a></li>
+        <li><a class="nav-link-custom <?php echo e(request()->routeIs('services') ? 'active' : ''); ?>" href="<?php echo e(route('services')); ?>"><?php echo e(__('Layanan')); ?></a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link-custom dropdown-toggle <?php echo e(request()->routeIs('pengadaan.*') ? 'active' : ''); ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pengadaan</a>
+          <a class="nav-link-custom dropdown-toggle <?php echo e(request()->routeIs('pengadaan.*') ? 'active' : ''); ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo e(__('Pengadaan')); ?></a>
           <ul class="dropdown-menu dropdown-menu-custom">
             <?php $__currentLoopData = \App\Models\Procurement::categories(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slug => $label): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li><a class="dropdown-item <?php echo e(request()->routeIs('pengadaan.*') && request()->route('category') === $slug ? 'active' : ''); ?>" href="<?php echo e(route('pengadaan.index', $slug)); ?>"><?php echo e($label); ?></a></li>
+            <li><a class="dropdown-item <?php echo e(request()->routeIs('pengadaan.*') && request()->route('category') === $slug ? 'active' : ''); ?>" href="<?php echo e(route('pengadaan.index', $slug)); ?>"><?php echo e(__($label)); ?></a></li>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </ul>
         </li>
@@ -116,6 +116,7 @@
       <div class="d-none d-lg-block">
         <a href="<?php echo e(route('contact')); ?>" class="btn btn-nav-contact">Hubungi Kami</a>
       </div>
+      
 
       <button class="navbar-toggler d-lg-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
         <i class="bi bi-list fs-3 text-white"></i>
