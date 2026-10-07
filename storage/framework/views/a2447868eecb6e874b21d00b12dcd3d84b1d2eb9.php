@@ -1,31 +1,31 @@
-@php $item = $item ?? null; @endphp
+<?php $item = $item ?? null; ?>
 
 <div class="row g-3">
   <div class="col-md-6">
     <label class="form-label small fw-semibold">Kategori</label>
     <select name="category" class="form-select" required>
       <option value="">— Pilih kategori —</option>
-      @foreach($categories as $slug => $label)
-        <option value="{{ $slug }}" {{ old('category', $item->category ?? '') === $slug ? 'selected' : '' }}>{{ $label }}</option>
-      @endforeach
+      <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slug => $label): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <option value="<?php echo e($slug); ?>" <?php echo e(old('category', $item->category ?? '') === $slug ? 'selected' : ''); ?>><?php echo e($label); ?></option>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </select>
   </div>
 
   <div class="col-md-6">
     <label class="form-label small fw-semibold">Tanggal Terbit</label>
     <input type="date" name="published_at" class="form-control"
-           value="{{ old('published_at', optional($item->published_at ?? null)->format('Y-m-d')) }}">
+           value="<?php echo e(old('published_at', optional($item->published_at ?? null)->format('Y-m-d'))); ?>">
   </div>
 
   <div class="col-12">
     <label class="form-label small fw-semibold">Judul</label>
     <input type="text" name="title" class="form-control" required
-           value="{{ old('title', $item->title ?? '') }}" placeholder="Contoh: Pengumuman Lelang Penjualan Limbah Non B3">
+           value="<?php echo e(old('title', $item->title ?? '')); ?>" placeholder="Contoh: Pengumuman Lelang Penjualan Limbah Non B3">
   </div>
 
   <div class="col-12">
     <label class="form-label small fw-semibold">Ringkasan Singkat</label>
-    <textarea name="excerpt" class="form-control" rows="2" maxlength="500" placeholder="Muncul di daftar pengumuman">{{ old('excerpt', $item->excerpt ?? '') }}</textarea>
+    <textarea name="excerpt" class="form-control" rows="2" maxlength="500" placeholder="Muncul di daftar pengumuman"><?php echo e(old('excerpt', $item->excerpt ?? '')); ?></textarea>
   </div>
 
   <div class="col-12">
@@ -55,27 +55,27 @@
 
   <div id="content-editor" style="height:250px; background:#fff;" class="border border-top-0 rounded-bottom"></div>
 
-  {{-- Field asli yang benar-benar dikirim ke server --}}
-  <textarea name="content" id="content-hidden" class="d-none">{{ old('content', $item->content ?? '') }}</textarea>
+  
+  <textarea name="content" id="content-hidden" class="d-none"><?php echo e(old('content', $item->content ?? '')); ?></textarea>
 </div>
 
   <div class="col-md-8">
     <label class="form-label small fw-semibold">Lampiran (opsional)</label>
     <input type="file" name="attachment" class="form-control">
     <div class="form-text">PDF, Word, Excel, atau gambar. Maks 10MB.</div>
-    @if(!empty($item) && $item->attachment_path)
+    <?php if(!empty($item) && $item->attachment_path): ?>
       <div class="mt-2 small">
-        <i class="bi bi-paperclip"></i> File saat ini: <strong>{{ $item->attachment_name }}</strong>
+        <i class="bi bi-paperclip"></i> File saat ini: <strong><?php echo e($item->attachment_name); ?></strong>
         <span class="text-muted">(unggah file baru untuk mengganti)</span>
       </div>
-    @endif
+    <?php endif; ?>
   </div>
 
   <div class="col-md-4 d-flex align-items-end">
     <div class="form-check">
       <input type="hidden" name="is_published" value="0">
       <input type="checkbox" name="is_published" value="1" class="form-check-input" id="is_published"
-             {{ old('is_published', $item->is_published ?? true) ? 'checked' : '' }}>
+             <?php echo e(old('is_published', $item->is_published ?? true) ? 'checked' : ''); ?>>
       <label class="form-check-label" for="is_published">Terbitkan sekarang</label>
     </div>
   </div>
@@ -102,4 +102,4 @@
       hiddenField.value = contentQuill.root.innerHTML;
     });
   });
-</script>
+</script><?php /**PATH C:\xampp\htdocs\Mctn\resources\views/admin/pengadaan/_form.blade.php ENDPATH**/ ?>

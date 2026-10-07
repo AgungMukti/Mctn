@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Admin') — PLN MCTN</title>
+    <title><?php echo $__env->yieldContent('title', 'Admin'); ?> — PLN MCTN</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -95,51 +95,52 @@
             .adm-wrap { padding: 20px 16px 40px; }
         }
     </style>
-    @yield('styles')
+    <?php echo $__env->yieldContent('styles'); ?>
 </head>
 <body>
 
 <nav class="adm-nav">
-  <a href="{{ route('admin.dashboard') }}" class="adm-brand">
-    <img src="{{ asset('images/LOGO.P-.jpg') }}" alt="PLN MCTN" class="adm-logo" onerror="this.style.display='none'">
+  <a href="<?php echo e(route('admin.dashboard')); ?>" class="adm-brand">
+    
+    <img src="<?php echo e(asset('images/LOGO.P-.jpg')); ?>" alt="PLN MCTN" class="adm-logo" onerror="this.style.display='none'">
   </a>
 
-  <a class="adm-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Dashboard</a>
-  <a class="adm-link {{ request()->routeIs('admin.pengadaan.*') ? 'active' : '' }}" href="{{ route('admin.pengadaan.index') }}">Pengadaan</a>
-  <a class="adm-link" href="{{ route('home') }}" target="_blank">Lihat Website</a>
+  <a class="adm-link <?php echo e(request()->routeIs('admin.dashboard') ? 'active' : ''); ?>" href="<?php echo e(route('admin.dashboard')); ?>">Dashboard</a>
+  <a class="adm-link <?php echo e(request()->routeIs('admin.pengadaan.*') ? 'active' : ''); ?>" href="<?php echo e(route('admin.pengadaan.index')); ?>">Pengadaan</a>
+  <a class="adm-link" href="<?php echo e(route('home')); ?>" target="_blank">Lihat Website</a>
 
   <span class="adm-spacer"></span>
-  <span class="adm-user">{{ auth()->user()->name ?? '' }}</span>
-  <form method="POST" action="{{ route('admin.logout') }}" class="m-0">
-    @csrf
+  <span class="adm-user"><?php echo e(auth()->user()->name ?? ''); ?></span>
+  <form method="POST" action="<?php echo e(route('admin.logout')); ?>" class="m-0">
+    <?php echo csrf_field(); ?>
     <button class="adm-logout"><i class="bi bi-box-arrow-right me-1"></i> Keluar</button>
   </form>
 </nav>
 
 <main class="adm-wrap">
-  <h1 class="adm-title">@yield('page-title', 'Admin')</h1>
+  <h1 class="adm-title"><?php echo $__env->yieldContent('page-title', 'Admin'); ?></h1>
 
-  @if(session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
-  @endif
-  @if(session('error'))
-    <div class="alert alert-danger">{{ session('error') }}</div>
-  @endif
-  @if($errors->any())
+  <?php if(session('success')): ?>
+    <div class="alert alert-success"><?php echo e(session('success')); ?></div>
+  <?php endif; ?>
+  <?php if(session('error')): ?>
+    <div class="alert alert-danger"><?php echo e(session('error')); ?></div>
+  <?php endif; ?>
+  <?php if($errors->any()): ?>
     <div class="alert alert-danger">
       <ul class="mb-0">
-        @foreach($errors->all() as $error)
-          <li>{{ $error }}</li>
-        @endforeach
+        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <li><?php echo e($error); ?></li>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </ul>
     </div>
-  @endif
+  <?php endif; ?>
 
-  @yield('content')
+  <?php echo $__env->yieldContent('content'); ?>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-@yield('scripts')
+<?php echo $__env->yieldContent('scripts'); ?>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -156,4 +157,4 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 </body>
-</html>
+</html><?php /**PATH C:\xampp\htdocs\Mctn\resources\views/admin/layout.blade.php ENDPATH**/ ?>
