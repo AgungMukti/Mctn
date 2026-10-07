@@ -203,7 +203,7 @@ html, body {
 }
 
 .navbar-main {
-    background: linear-gradient(90deg, #A7F3D0 0%, #14A2BA 100%); /* warna solid default untuk SEMUA halaman */
+    background: linear-gradient(90deg, #99DBE6 0%, #14A2BA 100%); /* warna solid default untuk SEMUA halaman */
     position: fixed;
     top: 0;
     width: 100%;
@@ -219,7 +219,7 @@ body.is-home .navbar-main:not(.scrolled) {
   -webkit-backdrop-filter: none;
 }
 .navbar-main.scrolled {
-  background: linear-gradient(90deg, #A7F3D0 0%, #14A2BA 100%);  /* warna solid navbar */
+  background: linear-gradient(90deg, #99DBE6 0%, #14A2BA 100%);  /* warna solid navbar */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 2px 10px rgba(0,0,0,0.15);

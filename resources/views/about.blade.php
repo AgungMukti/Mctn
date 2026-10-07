@@ -205,7 +205,7 @@
     entries.filter(e => e.isIntersecting).forEach(e => {
       const delay = Math.min(i, 5) * 0.12;
       e.target.style.setProperty('--d', delay + 's');
-      e.target.classList.add('sis-visible');
+      e.target.classList.add('is-visible');
       io.unobserve(e.target);
 
       e.target.querySelectorAll('.count-up').forEach(num => {

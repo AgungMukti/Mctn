@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', __('Tentang Kami') . ' — PLN MCTN'); ?>
+<?php $__env->startSection('title', 'Tentang Kami — PLN MCTN'); ?>
 <?php $__env->startSection('content'); ?>
 
 <script>document.documentElement.classList.add('js');</script>
@@ -36,10 +36,13 @@
 
   <section class="tk-section tk-intro">
     <div class="tk-wrap">
-      <h1 class="tk-heading rv rv-up"><?php echo e(__('Tentang PLN MCTN')); ?></h1>
+      <h1 class="tk-heading rv rv-up">Tentang PLN MCTN</h1>
       <p class="tk-text rv rv-up">
-        <?php echo e(__('PT PLN Mandau Cipta Tenaga Nusantara (MCTN) adalah anak perusahaan PT PLN (Persero) yang memasok listrik dan uap untuk mendukung operasional eksplorasi minyak di Blok Hulu Rokan. Melalui teknologi Gas Turbine Cogeneration, kami menghasilkan listrik dan uap dalam satu sistem yang efisien, sehingga kebutuhan energi operasi terpenuhi secara andal setiap hari.')); ?>
-
+        PT PLN Mandau Cipta Tenaga Nusantara (MCTN) adalah anak perusahaan
+        PT PLN (Persero) yang memasok listrik dan uap untuk mendukung operasional
+        eksplorasi minyak di Blok Hulu Rokan. Melalui teknologi Gas Turbine
+        Cogeneration, kami menghasilkan listrik dan uap dalam satu sistem yang
+        efisien, sehingga kebutuhan energi operasi terpenuhi secara andal setiap hari.
       </p>
     </div>
   </section>
@@ -48,13 +51,13 @@
     <div class="tk-wrap">
       <div class="tk-trio-grid">
         <figure class="tk-photo rv rv-zoom">
-          <img src="<?php echo e(asset('images/tentang/tentang1.jpg')); ?>" alt="<?php echo e(__('Foto 1 PLN MCTN')); ?>">
+          <img src="<?php echo e(asset('images/tentang/tentang1.jpg')); ?>" alt="Foto 1 PLN MCTN">
         </figure>
         <figure class="tk-photo rv rv-zoom">
-          <img src="<?php echo e(asset('images/tentang/tentang2.jpg')); ?>" alt="<?php echo e(__('Foto 2 PLN MCTN')); ?>">
+          <img src="<?php echo e(asset('images/tentang/tentang2.jpg')); ?>" alt="Foto 2 PLN MCTN">
         </figure>
         <figure class="tk-photo rv rv-zoom">
-          <img src="<?php echo e(asset('images/tentang/tentang3.jpg')); ?>" alt="<?php echo e(__('Foto 3 PLN MCTN')); ?>">
+          <img src="<?php echo e(asset('images/tentang/tentang3.jpg')); ?>" alt="Foto 3 PLN MCTN">
         </figure>
       </div>
     </div>
@@ -65,14 +68,14 @@
       <div class="tk-history-grid">
         
         <figure class="tk-photo rv rv-left">
-          <img src="<?php echo e(asset('images/tentang/footage8.jpg')); ?>" alt="<?php echo e(__('Pembangkit PLN MCTN')); ?>">
+          <img src="<?php echo e(asset('images/tentang/footage8.jpg')); ?>" alt="Pembangkit PLN MCTN">
         </figure>
         
         <div class="rv rv-right">
-          <h2 class="tk-heading tk-heading--navy"><?php echo e(__('Andal sejak 1998')); ?></h2>
+          <h2 class="tk-heading tk-heading--navy">Andal sejak 1998</h2>
           <p class="tk-text">
-            <?php echo e(__('Operasi ditangani oleh operator dan teknisi kompeten, dengan pasokan fuel gas dan feed water dari Pertamina Hulu Rokan sebagai mitra utama.')); ?>
-
+            Operasi ditangani oleh operator dan teknisi kompeten, dengan pasokan
+            fuel gas dan feed water dari Pertamina Hulu Rokan sebagai mitra utama.
           </p>
         </div>
       </div>
@@ -84,19 +87,19 @@
       <div class="tk-stats-grid">
         <div class="tk-stat rv rv-up">
           <p class="tk-stat-num"><span class="count-up" data-target="280">280</span><small>MW</small></p>
-          <p class="tk-stat-label"><?php echo e(__('Sekitar 70% kebutuhan listrik sistem Blok Hulu Rokan')); ?></p>
+          <p class="tk-stat-label">Sekitar 70% kebutuhan listrik sistem Blok Hulu Rokan</p>
         </div>
         <div class="tk-stat rv rv-up">
-          <p class="tk-stat-num"><span class="count-up" data-target="46850">46.850</span><small><?php echo e(__('ton/hari')); ?></small></p>
-          <p class="tk-stat-label"><?php echo e(__('Produksi uap, kontribusi 70% kebutuhan eksplorasi Duri')); ?></p>
+          <p class="tk-stat-num"><span class="count-up" data-target="46850">46.850</span><small>ton/hari</small></p>
+          <p class="tk-stat-label">Produksi uap, kontribusi 70% kebutuhan eksplorasi Duri</p>
         </div>
         <div class="tk-stat rv rv-up">
-          <p class="tk-stat-num"><span class="count-up" data-target="20" data-suffix="+">20+</span><small><?php echo e(__('tahun')); ?></small></p>
-          <p class="tk-stat-label"><?php echo e(__('Pengalaman operasi Gas Turbine Cogeneration andal')); ?></p>
+          <p class="tk-stat-num"><span class="count-up" data-target="20" data-suffix="+">20+</span><small>tahun</small></p>
+          <p class="tk-stat-label">Pengalaman operasi Gas Turbine Cogeneration andal</p>
         </div>
         <div class="tk-stat rv rv-up">
           <p class="tk-stat-num"><span class="count-up" data-target="1998" data-nogroup="true">1998</span></p>
-          <p class="tk-stat-label"><?php echo e(__('Tahun PLN MCTN mulai beroperasi')); ?></p>
+          <p class="tk-stat-label">Tahun PLN MCTN mulai beroperasi</p>
         </div>
       </div>
     </div>
@@ -116,38 +119,39 @@
           <circle cx="12" cy="12" r="3"/>
         </svg>
       </span>
-      <h2 class="vm-visi__title" id="visi-title"><?php echo e(__('Visi')); ?></h2>
+      <h2 class="vm-visi__title" id="visi-title">Visi</h2>
     </div>
 
     <p class="vm-visi__text rv rv-right">
-      <?php echo __('Menjadi perusahaan yang <mark>handal</mark> dalam proses penyediaan sumber energi dan pelayanan jasa bagi pelanggan, serta <mark>unggul</mark> dalam penerapan persyaratan keselamatan, kesehatan kerja, dan lingkungan (K3L).'); ?>
-
+      Menjadi perusahaan yang <mark>handal</mark> dalam proses penyediaan sumber energi
+      dan pelayanan jasa bagi pelanggan, serta <mark>unggul</mark> dalam penerapan persyaratan
+      keselamatan, kesehatan kerja, dan lingkungan (K3L).
     </p>
   </div>
 
   
   <div class="vm-misi">
     <div class="vm-misi__head rv rv-up">
-      <h2 class="vm-misi__title"><?php echo e(__('Misi')); ?></h2>
+      <h2 class="vm-misi__title">Misi</h2>
       <span class="vm-misi__rule" aria-hidden="true"></span>
     </div>
 
     <ol class="vm-misi__grid">
       <li class="vm-item rv rv-up">
         <span class="vm-item__num" aria-hidden="true">01</span>
-        <p class="vm-item__text"><?php echo e(__('Mendukung penerapan nilai AKHLAK dalam menjalankan bisnis.')); ?></p>
+        <p class="vm-item__text">Mendukung penerapan nilai AKHLAK dalam menjalankan bisnis.</p>
       </li>
       <li class="vm-item rv rv-up">
         <span class="vm-item__num" aria-hidden="true">02</span>
-        <p class="vm-item__text"><?php echo e(__('Menjunjung tinggi pelanggan dengan memenuhi kebutuhan sesuai kesepakatan.')); ?></p>
+        <p class="vm-item__text">Menjunjung tinggi pelanggan dengan memenuhi kebutuhan sesuai kesepakatan.</p>
       </li>
       <li class="vm-item rv rv-up">
         <span class="vm-item__num" aria-hidden="true">03</span>
-        <p class="vm-item__text"><?php echo e(__('Mengakui karyawan sebagai mitra perusahaan, bukan sekadar aset.')); ?></p>
+        <p class="vm-item__text">Mengakui karyawan sebagai mitra perusahaan, bukan sekadar aset.</p>
       </li>
       <li class="vm-item rv rv-up">
         <span class="vm-item__num" aria-hidden="true">04</span>
-        <p class="vm-item__text"><?php echo e(__('Menjadikan keselamatan & kesehatan kerja di atas keunggulan hasil produksi.')); ?></p>
+        <p class="vm-item__text">Menjadikan keselamatan &amp; kesehatan kerja di atas keunggulan hasil produksi.</p>
       </li>
     </ol>
   </div>
@@ -165,7 +169,7 @@
   function formatNumber(el, value) {
     const suffix  = el.dataset.suffix || '';
     const noGroup = el.dataset.nogroup === 'true';
-    return (noGroup ? String(value) : value.toLocaleString('<?php echo e(app()->getLocale() === 'en' ? 'en-US' : 'id-ID'); ?>')) + suffix;
+    return (noGroup ? String(value) : value.toLocaleString('id-ID')) + suffix;
   }
 
   function animateCount(el) {
