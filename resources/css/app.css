@@ -2431,7 +2431,7 @@ body.is-home .services-overlap-wrap.in-view .serviceSwiper {
   .service-modal-result-item { animation: none !important; }
 }
 
-.pg-page{position:relative;overflow:hidden;background:#fff}
+..pg-page{position:relative;overflow:hidden;background:#fff}
 .pg-deco{position:absolute;z-index:0;pointer-events:none}
 .pg-deco--right{right:-60px;top:40px;width:560px;height:640px}
 .pg-deco--left{left:-90px;bottom:-110px;width:420px;height:420px}

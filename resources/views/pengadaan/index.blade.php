@@ -25,7 +25,7 @@
 
 <section class="pg-page">
 
-  {{-- Dekorasi kanan: lingkaran + petir --}}
+  
   <svg class="pg-deco pg-deco--right" viewBox="0 0 560 640" fill="none" aria-hidden="true">
     <circle cx="360" cy="320" r="250" fill="#e1f3f6"/>
     <circle cx="360" cy="320" r="170" stroke="#12a3b8" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 10"/>
@@ -34,7 +34,7 @@
     <circle cx="500" cy="130" r="14" fill="#f5a100"/>
   </svg>
 
-  {{-- Dekorasi kiri bawah --}}
+  
   <svg class="pg-deco pg-deco--left" viewBox="0 0 420 420" fill="none" aria-hidden="true">
     <circle cx="210" cy="210" r="190" fill="#0b3a78" fill-opacity=".08"/>
     <circle cx="210" cy="210" r="120" stroke="#0b3a78" stroke-opacity=".25" stroke-width="2"/>
@@ -42,7 +42,6 @@
 
   <div class="pg-main">
 
-    {{-- Sub-navigasi kategori pengadaan (TIDAK DIUBAH) --}}
     <aside class="pg-side">
       <div class="pg-side__title">{{ __('Kategori') }}</div>
       <ul class="pg-side__list">
@@ -58,7 +57,6 @@
       </ul>
     </aside>
 
-    {{-- SISI KANAN (REDESIGN) --}}
     <div class="pgx">
 
       {{-- Header daftar --}}
@@ -150,18 +148,11 @@
         @endif
       @endif
 
-      {{-- Blok bantuan --}}
-      <div class="pgx-help">
-        <div>
-          <div class="pgx-help__title">{{ __('Ada pertanyaan seputar pengadaan?') }}</div>
-          <div class="pgx-help__text">{{ __('Tim kami siap membantu anda.') }}</div>
-        </div>
-        <a href="{{ route('contact') }}" class="pgx-help__btn">{{ __('Hubungi Kami') }}</a>
-      </div>
-
-    </div>
-  </div>
+      </div>   
+  </div>     
 </section>
+
+      
 
 {{-- Logo partner (tidak diubah) --}}
 <section class="py-5 bg-light">

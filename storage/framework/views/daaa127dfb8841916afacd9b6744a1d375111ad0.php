@@ -44,6 +44,20 @@
         .nav-link-custom { font-size: .86rem; font-weight: 500; color: rgba(255,255,255,.75) !important; padding: .5rem 1rem !important; position: relative; transition: color .2s; }
         .nav-link-custom:hover, .nav-link-custom.active { color: #fff !important; }
         .nav-link-custom.active::after { content: ''; position: absolute; bottom: 0; left: 1rem; right: 1rem; height: 2px; background: var(--amber); border-radius: 2px; }
+        /* Menu yang sedang aktif tidak bisa diklik lagi */
+.nav-link-custom.active:not(.dropdown-toggle) {
+    pointer-events: none;
+    cursor: default;
+}
+.dropdown-menu-custom .dropdown-item.active {
+    pointer-events: none;
+    cursor: default;
+}
+.btn-nav-contact.active {
+    pointer-events: none;
+    cursor: default;
+    opacity: .85;
+}
         .btn-nav-contact { background: var(--amber); color: var(--navy-deep); font-size: .82rem; font-weight: 700; padding: .5rem 1.2rem; border-radius: 6px; border: none; }
         .btn-nav-contact:hover { background: var(--amber-light); color: var(--navy-deep); }
 
@@ -94,7 +108,7 @@
 <nav class="navbar-main">
   <div class="container">
     <div class="d-flex align-items-center justify-content-between w-100">
-     <a class="d-flex align-items-center gap-2 text-decoration-none" href="<?php echo e(route('home')); ?>">
+     <a class="d-flex align-items-center gap-2 text-decoration-none <?php echo e(request()->routeIs('home') ? 'pe-none' : ''); ?>" href="<?php echo e(route('home')); ?>">
     <img src="<?php echo e(asset('images/LOGO2.jpg')); ?>" alt="Logo PLN MCTN" style="height:48px;width:auto;object-fit:contain;">
 </a>
 

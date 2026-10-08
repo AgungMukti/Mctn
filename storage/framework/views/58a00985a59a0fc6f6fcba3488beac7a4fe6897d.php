@@ -41,7 +41,6 @@
 
   <div class="pg-main">
 
-    
     <aside class="pg-side">
       <div class="pg-side__title"><?php echo e(__('Kategori')); ?></div>
       <ul class="pg-side__list">
@@ -58,7 +57,6 @@
       </ul>
     </aside>
 
-    
     <div class="pgx">
 
       
@@ -150,18 +148,11 @@
         <?php endif; ?>
       <?php endif; ?>
 
-      
-      <div class="pgx-help">
-        <div>
-          <div class="pgx-help__title"><?php echo e(__('Ada pertanyaan seputar pengadaan?')); ?></div>
-          <div class="pgx-help__text"><?php echo e(__('Tim kami siap membantu anda.')); ?></div>
-        </div>
-        <a href="<?php echo e(route('contact')); ?>" class="pgx-help__btn"><?php echo e(__('Hubungi Kami')); ?></a>
-      </div>
-
-    </div>
-  </div>
+      </div>   
+  </div>     
 </section>
+
+      
 
 
 <section class="py-5 bg-light">
