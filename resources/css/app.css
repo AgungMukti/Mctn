@@ -2635,3 +2635,65 @@ body.is-home .services-overlap-wrap.in-view .serviceSwiper {
   .pgx-search input { width: 100%; }
   .pgx-search, .pgx-select { flex: 1; }
 }
+
+/* ===== Pengadaan: foto lingkaran penuh ===== */
+.pg-deco.pg-deco--right {
+  right: 40px;
+  top: auto;
+  bottom: -120px;
+}
+
+.pg-deco-photo {
+  position: absolute;
+  z-index: 1;
+  width: 340px;
+  height: 340px;
+  right: 70px;
+  bottom: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  pointer-events: none;
+  box-shadow: 0 0 0 8px rgba(245, 196, 0, .35);
+}
+
+@media (max-width: 900px) {
+  .pg-deco.pg-deco--right {
+    right: 0;
+    bottom: 0;
+  }
+  .pg-deco-photo {
+    width: 200px;
+    height: 200px;
+    right: 29px;
+    bottom: 106px;
+    opacity: .6;
+  }
+}
+
+/* ===== Jarak bagian "Selalu Berusaha Menjadi yang Terbaik" ===== */
+.join-cta-section {
+  margin-top: 64px;
+  margin-bottom: 80px;
+  padding: 90px 0;
+}
+
+.icon-chart {
+  width: 70px;
+  left: 20px;
+  bottom: 16px;
+}
+
+.icon-percent {
+  width: 80px;
+  top: 14px;
+  right: 40px;
+}
+
+@media (max-width: 991px) {
+  .join-cta-section {
+    margin-top: 40px;
+    margin-bottom: 56px;
+    padding: 56px 0;
+  }
+}
+

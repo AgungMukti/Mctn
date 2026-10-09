@@ -28,10 +28,11 @@
   <svg class="pg-deco pg-deco--right" viewBox="0 0 560 640" fill="none" aria-hidden="true">
     <circle cx="360" cy="320" r="250" fill="#e1f3f6"/>
     <circle cx="360" cy="320" r="170" stroke="#12a3b8" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 10"/>
-    <path d="M390 90 190 360h130l-30 190 210-290H360z" fill="#f5c400" fill-opacity=".85"/>
     <circle cx="120" cy="560" r="26" fill="#0b3a78"/>
     <circle cx="500" cy="130" r="14" fill="#f5a100"/>
   </svg>
+
+  <img src="<?php echo e(asset('images/footage11.jpg')); ?>" alt="" class="pg-deco-photo">
 
   
   <svg class="pg-deco pg-deco--left" viewBox="0 0 420 420" fill="none" aria-hidden="true">
