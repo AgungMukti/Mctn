@@ -97,12 +97,11 @@
 <body class="{{ request()->routeIs('home') ? 'is-home' : '' }}">
 
  {{-- PAGE LOADER --}}
-  <div id="pageLoader" class="page-loader">
-    <div class="loader-ball-track">
-      <div class="loader-ball"></div>
+<div id="pageLoader" class="page-loader">
+    <div class="loader-dots">
+        <span></span><span></span><span></span>
     </div>
-    <span class="loader-text">PLN MCTN</span>
-  </div>
+</div>
 
 {{-- NAVBAR --}}
 <nav class="navbar-main">

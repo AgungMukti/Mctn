@@ -101,7 +101,6 @@
 
 <nav class="adm-nav">
   <a href="<?php echo e(route('admin.dashboard')); ?>" class="adm-brand">
-    
     <img src="<?php echo e(asset('images/LOGO.P-.jpg')); ?>" alt="PLN MCTN" class="adm-logo" onerror="this.style.display='none'">
   </a>
 

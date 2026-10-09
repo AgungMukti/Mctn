@@ -971,39 +971,25 @@ body:not(.is-home) {
   pointer-events: none;
 }
 
-.loader-ball-track {
-  position: relative;
-  width: 120px;
-  height: 14px;
-  margin-bottom: 20px;
+.loader-dots {
+  display: flex;
+  gap: 10px;
 }
 
-.loader-ball {
-  position: absolute;
-  top: 50%;
-  left: 0;
+.loader-dots span {
   width: 14px;
   height: 14px;
   border-radius: 50%;
   background: #f5a623;
-  transform: translateY(-50%);
-  animation: ballBounce 1s ease-in-out infinite;
-  box-shadow: 0 0 12px rgba(245,166,35,0.6);
+  animation: loader-hop 1.1s ease-in-out infinite;
 }
 
-@keyframes ballBounce {
-  0%   { left: 0; }
-  50%  { left: 106px; }
-  100% { left: 0; }
-}
+.loader-dots span:nth-child(2) { animation-delay: .15s; }
+.loader-dots span:nth-child(3) { animation-delay: .3s; }
 
-.loader-text {
-  color: #fff;
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 2px;
-  opacity: 0.85;
+@keyframes loader-hop {
+  0%, 60%, 100% { transform: translateY(0); opacity: .5; }
+  30%           { transform: translateY(-16px); opacity: 1; }
 }
 
 /* ===== CAROUSEL ===== */
@@ -2431,7 +2417,7 @@ body.is-home .services-overlap-wrap.in-view .serviceSwiper {
   .service-modal-result-item { animation: none !important; }
 }
 
-..pg-page{position:relative;overflow:hidden;background:#fff}
+.pg-page{position:relative;overflow:hidden;background:#fff}
 .pg-deco{position:absolute;z-index:0;pointer-events:none}
 .pg-deco--right{right:-60px;top:40px;width:560px;height:640px}
 .pg-deco--left{left:-90px;bottom:-110px;width:420px;height:420px}
