@@ -43,6 +43,7 @@
         .adm-link { padding: 10px 14px; border-radius: 8px; font-size: 14px; color: inherit; text-decoration: none; font-weight: 500; }
         .adm-link:hover { background: rgba(255,255,255,.35); color: inherit; }
         .adm-link.active { background: #fff; color: var(--teal-dark); font-weight: 700; }
+        .adm-link.disabled-link { pointer-events: none; cursor: default; }
         .adm-spacer { flex: 1; }
         .adm-user { font-size: 14px; margin-right: 10px; }
         .adm-logout { border: 1px solid #0B2E36; background: transparent; color: #0B2E36; border-radius: 8px; padding: 8px 16px; font-size: 13px; }
@@ -50,7 +51,18 @@
 
         /* ===== Konten ===== */
         .adm-wrap { max-width: 1280px; margin: 0 auto; padding: 28px 28px 48px; }
-        .adm-title { font-size: 24px; font-weight: 800; margin: 0 0 20px; }
+        .adm-title { font-size: 24px; font-weight: 800; margin: 0 0 12px; }
+        /* ===== Tombol kembali ===== */
+        .adm-back {
+          display: inline-flex; align-items: center; gap: 8px;
+          margin: 0 0 20px; padding: 9px 20px;
+          background: var(--teal-deep); color: #fff !important;
+          border-radius: 999px; font-size: 14px; font-weight: 600;
+          text-decoration: none !important;
+          box-shadow: 0 2px 6px rgba(11, 74, 87, .25);
+          transition: background .2s, transform .2s;
+          }
+.adm-back:hover { background: var(--navy-deep); transform: translateX(-2px); }
 
         /* ===== Kartu statistik ===== */
         .adm-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 24px; }
@@ -100,14 +112,21 @@
 <body>
 
 <nav class="adm-nav">
-  <a href="{{ route('admin.dashboard') }}" class="adm-brand">
+  <a href="{{ route('admin.dashboard') }}"
+   class="adm-brand {{ request()->routeIs('admin.dashboard') ? 'disabled-link' : '' }}"
+   @if(request()->routeIs('admin.dashboard')) aria-current="page" tabindex="-1" @endif>
     <img src="{{ asset('images/LOGO.P-.jpg') }}" alt="PLN MCTN" class="adm-logo" onerror="this.style.display='none'">
-  </a>
+</a>
 
-  <a class="adm-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Dashboard</a>
-  <a class="adm-link {{ request()->routeIs('admin.pengadaan.*') ? 'active' : '' }}" href="{{ route('admin.pengadaan.index') }}">Pengadaan</a>
-  <a class="adm-link" href="{{ route('home') }}" target="_blank">Lihat Website</a>
+ <a class="adm-link {{ request()->routeIs('admin.dashboard') ? 'active disabled-link' : '' }}"
+   href="{{ route('admin.dashboard') }}"
+   @if(request()->routeIs('admin.dashboard')) aria-current="page" tabindex="-1" @endif>Dashboard</a>
 
+<a class="adm-link {{ request()->routeIs('admin.pengadaan.*') ? 'active' : '' }} {{ request()->routeIs('admin.pengadaan.index') ? 'disabled-link' : '' }}"
+   href="{{ route('admin.pengadaan.index') }}"
+   @if(request()->routeIs('admin.pengadaan.index')) aria-current="page" tabindex="-1" @endif>Pengadaan</a>
+
+<a class="adm-link" href="{{ route('home') }}" target="_blank">Lihat Website</a>
   <span class="adm-spacer"></span>
   <span class="adm-user">{{ auth()->user()->name ?? '' }}</span>
   <form method="POST" action="{{ route('admin.logout') }}" class="m-0">
@@ -118,6 +137,24 @@
 
 <main class="adm-wrap">
   <h1 class="adm-title">@yield('page-title', 'Admin')</h1>
+
+  @php
+      if ($__env->hasSection('back-url')) {
+          $backUrl = trim($__env->yieldContent('back-url'));
+      } elseif (request()->routeIs('admin.dashboard')) {
+          $backUrl = null;
+      } elseif (request()->routeIs('admin.pengadaan.index')) {
+          $backUrl = route('admin.dashboard');
+      } else {
+          $backUrl = route('admin.pengadaan.index');
+      }
+  @endphp
+
+  @if($backUrl)
+    <a href="{{ $backUrl }}" class="adm-back">
+      <i class="bi bi-arrow-left"></i> Kembali
+    </a>
+  @endif
 
   @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
