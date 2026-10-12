@@ -304,10 +304,10 @@
 
 {{-- OUR CLIENT --}}
 <section class="py-5" style="overflow:hidden;">
-  <div class="container text-center mb-5">
-    <div class="section-tag mb-2">Kepercayaan Mereka</div>
-    <h2 class="section-title">Klien Kami</h2>
-  </div>
+  <div class="container text-center mb-4">
+  <h2 class="section-title mb-4">Klien Kami</h2>
+  <div class="title-underline"></div>
+</div>
 
   <div class="client-marquee">
     <div class="client-track">
@@ -343,11 +343,10 @@
 <section class="py-5 my-2">
   <div class="container">
     <div class="d-flex align-items-end justify-content-between mb-5 flex-wrap gap-3">
-      <div>
-        <div class="section-tag mb-2">Infrastruktur </div>
-        <h2 class="section-title mb-0"> Proyek Kami </h2>
-      </div>
-    </div>
+      <div class="container text-center mb-4">
+  <h2 class="section-title mb-4">Proyek Kami</h2>
+  <div class="title-underline"></div>
+</div>
 
     <div class="row g-4 align-items-start fac-reveal">
 
