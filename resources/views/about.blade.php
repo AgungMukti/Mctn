@@ -38,6 +38,7 @@
   <section class="tk-section tk-intro">
     <div class="tk-wrap">
       <h1 class="tk-heading rv rv-up">Tentang PLN MCTN</h1>
+      <div class="title-underline"></div>
       <p class="tk-text rv rv-up">
         PT PLN Mandau Cipta Tenaga Nusantara (MCTN) adalah anak perusahaan
         PT PLN (Persero) yang memasok listrik dan uap untuk mendukung operasional
@@ -74,6 +75,7 @@
         {{-- Teks masuk dari KANAN --}}
         <div class="rv rv-right">
           <h2 class="tk-heading tk-heading--navy">Andal sejak 1998</h2>
+          <div class="title-underline"></div>
           <p class="tk-text">
             Operasi ditangani oleh operator dan teknisi kompeten, dengan pasokan
             fuel gas dan feed water dari Pertamina Hulu Rokan sebagai mitra utama.

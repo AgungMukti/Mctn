@@ -721,9 +721,9 @@ body:not(.is-home) {
   top: 50%;
   left: 60px;
   transform: translateY(-50%);
-  max-width: 500px;
+  max-width: min(500px, calc(45vw - 90px));
   color: #fff;
-  z-index: 2;          /* di atas gradient & blur */
+  z-index: 2;          
 }
 
 .about-hero-label {
@@ -1338,7 +1338,7 @@ body:not(.is-home) {
   .swiper-slide { width: 85vw !important; }
 }
 .services-hero-section {
-    padding-top: 90px;
+    padding-top: 40px;
     margin-bottom: 60px;
     position: relative;
 }
@@ -1364,6 +1364,10 @@ body:not(.is-home) {
     background-color: #F59E0B;
     margin: 0 auto 30px auto;
     border-radius: 2px;
+}
+
+.tk-page .title-underline {
+    margin: 0 0 30px 0;
 }
 
 .slide-text-box {

@@ -7,7 +7,7 @@
 
 <section class="services-hero-section">
   <div class="container">
-    <h2 class="section-title mb-5 rv rv-up">Solusi Energi Terintegrasi</h2>
+    <h2 class="section-title mb-2 rv rv-up">Solusi Energi Terintegrasi</h2>
     <div class="title-underline rv rv-line"></div>
   </div>
 
