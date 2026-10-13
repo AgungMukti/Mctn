@@ -11,7 +11,8 @@
         body { font-family:'Inter',sans-serif; background: linear-gradient(135deg,#061428,#0A3D7A); min-height:100vh; display:flex; align-items:center; }
         h1,h2,h3,h4,h5 { font-family:'Sora',sans-serif; }
         .login-card { background:#fff; border-radius:14px; max-width:400px; width:100%; margin:auto; padding:2.25rem; }
-        .brand-mark { width:44px;height:44px;background:linear-gradient(135deg,#1C6FD8,#0A3D7A);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#FFC857;font-size:1.3rem; }
+        .brand-mark { width:140px;flex-shrink:0; }
+        .brand-mark img { width:100%;height:auto;display:block; }
         .btn-amber { background:#F2A00E;color:#061428;border:none;font-weight:700; }
         .btn-amber:hover { background:#FFC857;color:#061428; }
     </style>
@@ -19,10 +20,11 @@
 <body>
   <div class="login-card">
     <div class="d-flex align-items-center gap-2 mb-4">
-      <div class="brand-mark"><i class="bi bi-lightning-charge-fill"></i></div>
+      <div class="brand-mark">
+  <img src="{{ asset('images/lOGO.P-.jpg') }}" alt="Logo PLN MCTN">
+</div>
       <div>
-        <div class="fw-bold">PLN MCTN</div>
-        <div class="text-muted small">Panel Admin</div>
+        
       </div>
     </div>
 
