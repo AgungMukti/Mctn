@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Procurement;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Illuminate\Support\Facades\Storage;
 
 class ProcurementController extends Controller
 {
@@ -16,29 +17,30 @@ class ProcurementController extends Controller
 {
     $this->ensureValidCategory($category);
 
-    $q    = trim((string) $request->query('q', ''));
-    $year = $request->query('year');
+    $q    = trim($request->string('q')->toString());
+$year = $request->integer('year') ?: null;
 
-    $base = Procurement::query()->category($category)->published();
+$base = Procurement::query()->category($category)->published();
 
-    $years = (clone $base)
+$years = (clone $base)
     ->whereNotNull('published_at')
-    ->pluck('published_at')
-    ->map(fn ($d) => $d->format('Y'))
-    ->unique()
-    ->sortDesc()
-    ->values();
+    ->selectRaw('YEAR(published_at) as year')
+    ->distinct()
+    ->orderByDesc('year')
+    ->pluck('year');
 
-    $items = $base
-        ->when($q !== '', fn ($query) => $query->where(function ($w) use ($q) {
-            $w->where('title', 'like', "%{$q}%")
-              ->orWhere('excerpt', 'like', "%{$q}%");
-        }))
-        ->when($year, fn ($query) => $query->whereYear('published_at', $year))
-        ->orderByDesc('published_at')
-        ->orderByDesc('id')
-        ->paginate(5)
-        ->withQueryString();
+$like = '%' . addcslashes($q, '%_\\') . '%';
+
+$items = $base
+    ->when($q !== '', fn ($query) => $query->where(function ($w) use ($like) {
+        $w->where('title', 'like', $like)
+          ->orWhere('excerpt', 'like', $like);
+    }))
+    ->when($year, fn ($query) => $query->whereYear('published_at', $year))
+    ->orderByDesc('published_at')
+    ->orderByDesc('id')
+    ->paginate(5)
+    ->withQueryString();
 
     return view('pengadaan.index', [
         'category'      => $category,
@@ -84,12 +86,13 @@ class ProcurementController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
-        abort_unless($item->attachment_path, 404);
+        $disk = Storage::disk('public');
+        abort_unless($disk->exists($item->attachment_path), 404);
 
-        return \Storage::disk('public')->download(
-            $item->attachment_path,
-            $item->attachment_name ?? basename($item->attachment_path)
-        );
+    return $disk->download(
+    $item->attachment_path,
+    $item->attachment_name ?? basename($item->attachment_path)
+);
     }
 
     protected function ensureValidCategory(string $category): void

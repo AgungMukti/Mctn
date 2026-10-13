@@ -14,7 +14,9 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/tentang', [PageController::class, 'about'])->name('about');
 Route::get('/layanan', [PageController::class, 'services'])->name('services');
 Route::get('/kontak', [PageController::class, 'contact'])->name('contact');
-Route::post('/kontak', [PageController::class, 'sendContact'])->name('contact.send');
+Route::post('/kontak', [PageController::class, 'sendContact'])
+    ->middleware('throttle:5,1')
+    ->name('contact.send');
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +26,13 @@ Route::post('/kontak', [PageController::class, 'sendContact'])->name('contact.se
 | DPT, pemenang & jadwal sanggah, serta lelang. Semua kategori memakai
 | satu controller yang sama dengan parameter {category}.
 */
-Route::prefix('pengadaan')->name('pengadaan.')->group(function () {
-    Route::get('/{category}', [ProcurementController::class, 'index'])->name('index');
-    Route::get('/{category}/{slug}/unduh', [ProcurementController::class, 'download'])->name('download');
-    Route::get('/{category}/{slug}', [ProcurementController::class, 'show'])->name('show');
-});
-
+Route::prefix('pengadaan')->name('pengadaan.')
+    ->where(['category' => 'berita|tender|dpt|pemenang|lelang'])
+    ->group(function () {
+        Route::get('/{category}', [ProcurementController::class, 'index'])->name('index');
+        Route::get('/{category}/{slug}/unduh', [ProcurementController::class, 'download'])->name('download');
+        Route::get('/{category}/{slug}', [ProcurementController::class, 'show'])->name('show');
+    });
 /*
 |--------------------------------------------------------------------------
 | Admin — Pengelolaan Pengumuman Pengadaan
@@ -41,7 +44,9 @@ use App\Http\Controllers\Admin\ProcurementAdminController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('login');
-    Route::post('/login', [AdminAuthController::class, 'login'])->name('login.submit');
+    Route::post('/login', [AdminAuthController::class, 'login'])
+    ->middleware('throttle:5,1')
+    ->name('login.submit');
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
 
     Route::middleware('admin')->group(function () {

@@ -2601,7 +2601,7 @@ body.is-home .services-overlap-wrap.in-view .serviceSwiper {
 .pgx-chip--amber { background: #FAEEDA; color: #633806; }
 .pgx-chip--green { background: #EAF3DE; color: #27500A; }
 .pgx-feature__title { font-family: 'Sora', sans-serif; font-size: 1.2rem; font-weight: 700; line-height: 1.35; color: #0A3D7A; margin: 0 0 6px; }
-.pgx-feature__text { font-size: .9rem; line-height: 1.6; color: #5b6472; margin: 0 0 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pgx-feature__text { font-size: .9rem; line-height: 1.6; color: #5b6472; margin: 0 0 10px; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .pgx-more { font-size: .85rem; font-weight: 600; color: #0A3D7A; }
 .pgx-more i { display: inline-block; transition: transform .2s; }
 .pgx-feature:hover .pgx-more i { transform: translateX(4px); }

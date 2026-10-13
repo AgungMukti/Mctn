@@ -38,7 +38,7 @@
 
           {{-- Isi pengumuman --}}
           <div style="font-size:.95rem;line-height:1.8;color:#2a2f38;">
-            {!! $item->content !!}
+           {!! clean($item->content) !!}
           </div>
 
           {{-- Lampiran --}}
