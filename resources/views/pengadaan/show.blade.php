@@ -12,8 +12,17 @@
   .pengumuman-head h1 { font-size:1.4rem; font-weight:700; margin:.75rem 0 .5rem; color:#0C447C; line-height:1.35; }
   .pengumuman-head .meta { font-size:.85rem; color:#185FA5; }
   .badge-kategori { background:#fff; color:#185FA5; font-size:.75rem; font-weight:600; padding:4px 12px; border-radius:8px; display:inline-block; }
-  .pdf-preview { position:relative; max-height:480px; overflow:hidden; border:1px solid var(--line); border-radius:8px; }
-  .pdf-preview canvas { width:100%; display:block; }
+  .pdf-preview {
+  position: relative;
+  width: 100%;
+  max-width: 700px;      /* lebar seperti gambar 1 */
+  max-height: 300px;     /* tinggi dipotong seperti gambar 1 */
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin: 0;
+}
+.pdf-preview canvas { width: 100%; display: block; }
   .pdf-fade { position:absolute; left:0; right:0; bottom:0; height:100px; background:linear-gradient(to bottom, rgba(255,255,255,0), #fff); }
   .file-card { display:flex; align-items:center; gap:1rem; padding:1.25rem 1.5rem; background:#f8fafc; border:1px solid var(--line); border-radius:8px; }
   .file-card i { font-size:2.2rem; color:#185FA5; }
@@ -74,8 +83,11 @@
     @endif
 
     <div class="mt-3">
-      <a href="{{ route('pengadaan.download', [$category, $item->slug]) }}" class="btn btn-amber">
-        <i class="bi bi-download me-1"></i> Unduh Lampiran
+      <a href="{{ route('pengadaan.download', [$category, $item->slug]) }}"
+    class="btn btn-amber"
+    data-no-loader
+     download>
+     <i class="bi bi-download me-1"></i> Unduh Lampiran
       </a>
     </div>
   </div>

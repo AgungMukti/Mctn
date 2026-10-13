@@ -262,18 +262,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Munculkan loader lagi saat user klik link internal (sebelum pindah halaman)
   document.addEventListener('click', (e) => {
-    const link = e.target.closest('a');
-    if (
-      link &&
-      link.href &&
-      link.href.startsWith(window.location.origin) &&   // hanya link internal
-      !link.href.includes('#') &&                          // bukan anchor link
-      link.target !== '_blank'                             // bukan buka tab baru
-    ) {
-      pageLoader.classList.remove('hide');
-    }
-  });
+  const link = e.target.closest('a');
+  if (
+    link &&
+    link.href &&
+    link.href.startsWith(window.location.origin) &&  
+    !link.href.includes('#') &&                      
+    link.target !== '_blank' &&                      
+    !link.hasAttribute('download') &&                
+    !link.hasAttribute('data-no-loader') &&          
+    !e.ctrlKey && !e.metaKey && !e.shiftKey          
+  ) {
+    pageLoader.classList.remove('hide');
+  }
+});
 
+// Pengaman: sembunyikan loader saat halaman tampil lagi (tombol Back, dll.)
+window.addEventListener('pageshow', () => {
+  pageLoader.classList.add('hide');
+});
   // Kalau user tekan tombol back/forward browser, loader tetap muncul sebentar
   window.addEventListener('pageshow', (event) => {
     if (event.persisted) {
