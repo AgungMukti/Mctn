@@ -19,7 +19,8 @@ class ProcurementAdminController extends Controller
         }
 
         if ($request->filled('q')) {
-            $query->where('title', 'like', '%' . $request->string('q') . '%');
+            $like = '%' . addcslashes($request->string('q')->toString(), '%_\\') . '%';
+            $query->where('title', 'like', $like);
         }
 
         $items = $query->paginate(15)->withQueryString();
@@ -70,14 +71,18 @@ class ProcurementAdminController extends Controller
             $data['slug'] = $this->uniqueSlug($data['title'], $pengadaan->id);
         }
 
+        // Simpan file baru dulu, hapus file lama hanya setelah database berhasil diperbarui
+        $oldPath = null;
         if ($request->hasFile('attachment')) {
-            if ($pengadaan->attachment_path) {
-                Storage::disk('public')->delete($pengadaan->attachment_path);
-            }
+            $oldPath = $pengadaan->attachment_path;
             [$data['attachment_path'], $data['attachment_name']] = $this->storeAttachment($request);
         }
 
         $pengadaan->update($data);
+
+        if ($oldPath) {
+            Storage::disk('public')->delete($oldPath);
+        }
 
         return redirect()
             ->route('admin.pengadaan.index')
@@ -97,11 +102,17 @@ class ProcurementAdminController extends Controller
 
     protected function validated(Request $request, ?int $ignoreId = null): array
     {
+        // Editor Quill yang kosong menghasilkan <p><br></p>, ubah jadi null agar ditolak 'required'
+        $content = (string) $request->input('content');
+        $request->merge([
+            'content' => trim(strip_tags($content, '<img>')) === '' ? null : $content,
+        ]);
+
         $validated = $request->validate([
             'category'     => ['required', 'in:' . implode(',', array_keys(Procurement::categories()))],
             'title'        => ['required', 'string', 'max:255'],
             'excerpt'      => ['nullable', 'string', 'max:500'],
-            'content'      => ['nullable', 'string'],
+            'content'      => ['required', 'string', 'max:100000'],
             'published_at' => ['nullable', 'date'],
             'is_published' => ['nullable', 'boolean'],
             'attachment'   => ['nullable', 'file', 'max:10240', 'mimes:pdf,doc,docx,xls,xlsx,jpg,jpeg,png'],
@@ -124,7 +135,7 @@ class ProcurementAdminController extends Controller
 
     protected function uniqueSlug(string $title, ?int $ignoreId = null): string
     {
-        $base = Str::slug($title);
+        $base = Str::slug($title) ?: 'pengumuman';
         $slug = $base;
         $i = 1;
 
