@@ -12,25 +12,44 @@ class ProcurementController extends Controller
      * Menampilkan daftar pengumuman untuk satu kategori pengadaan.
      * Contoh kategori: berita, tender, dpt, pemenang, lelang.
      */
-    public function index(string $category)
-    {
-        $this->ensureValidCategory($category);
+    public function index(Request $request, string $category)
+{
+    $this->ensureValidCategory($category);
 
-        $items = Procurement::query()
-            ->category($category)
-            ->published()
-            ->orderByDesc('published_at')
-            ->orderByDesc('id')
-            ->paginate(10)
-            ->withQueryString();
+    $q    = trim((string) $request->query('q', ''));
+    $year = $request->query('year');
 
-        return view('pengadaan.index', [
-            'category'      => $category,
-            'categoryLabel' => Procurement::categoryLabel($category),
-            'categories'    => Procurement::categories(),
-            'items'         => $items,
-        ]);
-    }
+    $base = Procurement::query()->category($category)->published();
+
+    $years = (clone $base)
+    ->whereNotNull('published_at')
+    ->pluck('published_at')
+    ->map(fn ($d) => $d->format('Y'))
+    ->unique()
+    ->sortDesc()
+    ->values();
+
+    $items = $base
+        ->when($q !== '', fn ($query) => $query->where(function ($w) use ($q) {
+            $w->where('title', 'like', "%{$q}%")
+              ->orWhere('excerpt', 'like', "%{$q}%");
+        }))
+        ->when($year, fn ($query) => $query->whereYear('published_at', $year))
+        ->orderByDesc('published_at')
+        ->orderByDesc('id')
+        ->paginate(5)
+        ->withQueryString();
+
+    return view('pengadaan.index', [
+        'category'      => $category,
+        'categoryLabel' => Procurement::categoryLabel($category),
+        'categories'    => Procurement::categories(),
+        'items'         => $items,
+        'q'             => $q,
+        'year'          => $year,
+        'years'         => $years,
+    ]);
+}
 
     /**
      * Menampilkan detail satu pengumuman.

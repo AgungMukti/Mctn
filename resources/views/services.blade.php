@@ -7,7 +7,7 @@
 
 <section class="services-hero-section">
   <div class="container">
-    <h2 class="section-title mb-5 rv rv-up">Solusi Energi Terintegrasi</h2>
+    <h2 class="section-title mb-2 rv rv-up">Solusi Energi Terintegrasi</h2>
     <div class="title-underline rv rv-line"></div>
   </div>
 
@@ -189,11 +189,20 @@
 })();
 
 const serviceData = {
-  fast:  { tag:'FAST',  title:'FAST',  desc:'Enterprise Interconnection Extra Facility Solutions. Gardu Induk, IML, Freq Converter, dan saluran transmisi & distribusi.', img:'{{ asset("images/fast.jpg") }}', fullTitle:'Enterprise Interconnection Extra Facility Solutions', results:['Pemasangan Gardu Induk Blok Hulu Rokan','Instalasi Onshore Power Supply 4000 kVA','Pemeliharaan saluran transmisi & distribusi'] },
-  poqs:  { tag:'POQs',  title:'POQs',  desc:'Enterprise Power Quality Solutions. Peralatan power quality, voltage quality, dan watt/var compensator.', img:'{{ asset("images/poqs.jpg") }}', fullTitle:'Enterprise Power Quality Solutions', results:['Instalasi sistem voltage quality','Pemasangan UPS backup daya kritikal','Optimalisasi power factor operasional'] },
-  utis:  { tag:'UTIS',  title:'UTIS',  desc:'Enterprise Utility Solutions. Unit Gardu Spesial, Trafo, Genset, dan Capacitor Banks.', img:'{{ asset("images/utis.jpg") }}', fullTitle:'Enterprise Utility Solutions', results:['Pengoperasian Unit Gardu Spesial 24/7','Pemeliharaan trafo & genset cadangan','Manajemen capacitor banks'] },
-  steam: { tag:'STEAM', title:'STEAM', desc:'Enterprise Steam Solutions. Produksi dan distribusi uap dengan Gas Turbine Cogeneration.', img:'{{ asset("images/steam.jpg") }}', fullTitle:'Enterprise Steam Solutions', results:['Produksi 46.850 Ton/hari uap eksplorasi Duri','Kontribusi 70% kebutuhan uap eksplorasi','Operasi Gas Turbine Cogeneration tanpa henti'] },
-  gres:  { tag:'GRES',  title:'GRES',  desc:'Enterprise Green & Renewable Energy Solutions. Solusi energi hijau mendukung Net Zero Emission.', img:'{{ asset("images/gres.jpg") }}', fullTitle:'Enterprise Green & Renewable Energy Solutions', results:['Studi kelayakan energi terbarukan Blok Hulu Rokan','Inisiatif pengurangan emisi karbon operasional','Kolaborasi riset teknologi energi hijau'] }
+  fast:  { tag:'FAST',  title:'FAST',  desc:'Enterprise Interconnection Extra Facility Solutions. Gardu Induk, IML, Freq Converter, dan saluran transmisi & distribusi.', img:'{{ asset("images/fastt.jpg") }}', fullTitle:'Enterprise Interconnection Extra Facility Solutions', 
+  results:['Pemasangan Gardu Induk Blok Hulu Rokan','Instalasi Onshore Power Supply 4000 kVA','Pemeliharaan saluran transmisi & distribusi'] },
+   
+  poqs:  { tag:'POQs',  title:'POQs',  desc:'Enterprise Power Quality Solutions. Peralatan power quality, voltage quality, dan watt/var compensator.', img:'{{ asset("images/poqss.jpg") }}', fullTitle:'Enterprise Power Quality Solutions', 
+  results:['Instalasi sistem voltage quality','Pemasangan UPS backup daya kritikal','Optimalisasi power factor operasional'] },
+
+  utis:  { tag:'UTIS',  title:'UTIS',  desc:'Enterprise Utility Solutions. Unit Gardu Spesial, Trafo, Genset, dan Capacitor Banks.', img:'{{ asset("images/utiss.jpg") }}', fullTitle:'Enterprise Utility Solutions', 
+  results:['Pengoperasian Unit Gardu Spesial 24/7','Pemeliharaan trafo & genset cadangan','Manajemen capacitor banks'] },
+
+  steam: { tag:'STEAM', title:'STEAM', desc:'Enterprise Steam Solutions. Produksi dan distribusi uap dengan Gas Turbine Cogeneration.', img:'{{ asset("images/steamm.jpg") }}', fullTitle:'Enterprise Steam Solutions',
+   results:['Produksi 46.850 Ton/hari uap eksplorasi Duri','Kontribusi 70% kebutuhan uap eksplorasi','Operasi Gas Turbine Cogeneration tanpa henti'] },
+
+  gres:  { tag:'GRES',  title:'GRES',  desc:'Enterprise Green & Renewable Energy Solutions. Solusi energi hijau mendukung Net Zero Emission.', img:'{{ asset("images/gress.jpg") }}', fullTitle:'Enterprise Green & Renewable Energy Solutions',
+   results:['Studi kelayakan energi terbarukan Blok Hulu Rokan','Inisiatif pengurangan emisi karbon operasional','Kolaborasi riset teknologi energi hijau'] }
 };
 
 const servicesWrap = document.getElementById('servicesWrap');
