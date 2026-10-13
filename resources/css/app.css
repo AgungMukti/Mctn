@@ -2743,3 +2743,7 @@ a.pln-btn.is-fill:hover { background: #082c5c; }
   border: 1px solid #d5dbe3; border-radius: 10px; background: #fff;
 }
 .pgx-reset:hover { background: #0b3a78; color: #fff; }
+
+.pg-cat.is-active {
+  cursor: default;
+}

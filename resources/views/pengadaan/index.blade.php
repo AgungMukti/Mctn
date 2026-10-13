@@ -43,14 +43,20 @@
         <div class="pg-side__title">{{ __('Kategori') }}</div>
         <ul class="pg-side__list">
           @foreach($categories as $slug => $label)
-          <li>
-            <a href="{{ route('pengadaan.index', $slug) }}"
-               class="pg-cat {{ $category === $slug ? 'is-active' : '' }}">
-              <i class="bi {{ $iconFor($slug) }}"></i>
-              {{ __($label) }}
-            </a>
-          </li>
-          @endforeach
+       <li>
+        @if($category === $slug)
+       <span class="pg-cat is-active" aria-current="page">
+      <i class="bi {{ $iconFor($slug) }}"></i>
+      {{ __($label) }}
+      </span>
+          @else
+      <a href="{{ route('pengadaan.index', $slug) }}" class="pg-cat">
+      <i class="bi {{ $iconFor($slug) }}"></i>
+      {{ __($label) }}
+    </a>
+  @endif
+</li>
+@endforeach
         </ul>
       </aside>
 
